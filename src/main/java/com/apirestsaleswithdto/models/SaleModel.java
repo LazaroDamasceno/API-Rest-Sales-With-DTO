@@ -17,6 +17,7 @@ public class SaleModel {
     String paymentMethod;
     double productPrice;
     double salesTax;
+    double amountPaidInTaxes;
     double finalPrice;
     double amountPaid;
     double change;

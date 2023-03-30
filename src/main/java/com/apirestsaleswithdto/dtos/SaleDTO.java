@@ -14,6 +14,7 @@ public class SaleDTO {
     String paymentMethod;
     double productPrice;
     double salesTax;
+    double amountPaidInTaxes;
     double finalPrice;
     double amountPaid;
     double change;
@@ -23,6 +24,7 @@ public class SaleDTO {
         this.paymentMethod = model.getPaymentMethod();
         this.productPrice = model.getProductPrice();
         this.salesTax = model.getSalesTax();
+        this.amountPaidInTaxes = model.getAmountPaidInTaxes();
         this.finalPrice = model.getFinalPrice();
         this.amountPaid = model.getAmountPaid();
         this.change = model.getChange();

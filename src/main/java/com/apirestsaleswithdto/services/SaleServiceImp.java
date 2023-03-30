@@ -27,6 +27,7 @@ public class SaleServiceImp implements SaleService {
     public SaleModel save(SaleModel model) {
         setFinalPrice(model);
         setChange(model);
+        setAmountPaidInTaxes(model);
         return repository.saveAndFlush(model);
     }
 
@@ -43,6 +44,13 @@ public class SaleServiceImp implements SaleService {
             change = model.getAmountPaid() - model.getFinalPrice();
         }
         model.setChange(change);
+    }
+
+    void setAmountPaidInTaxes(SaleModel model) {
+        var price = model.getProductPrice();
+        var finalPrice = model.getFinalPrice();
+        var amountPaidInTaxes = finalPrice - price;
+        model.setAmountPaidInTaxes(amountPaidInTaxes);
     }
 
     @Override
