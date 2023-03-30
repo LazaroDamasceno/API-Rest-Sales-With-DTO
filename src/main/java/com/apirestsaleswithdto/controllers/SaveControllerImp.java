@@ -14,6 +14,7 @@ import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/sales")
 public class SaveControllerImp implements SaveController {
 
     final SaleService service;
