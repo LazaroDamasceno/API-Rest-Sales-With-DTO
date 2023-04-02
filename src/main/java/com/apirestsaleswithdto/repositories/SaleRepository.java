@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface SaleRepository extends JpaRepository<SaleModel, Integer> {
     Optional<SaleModel> findById(int id);
-    void deleteBYId(int id);
+    void deleteById(int id);
 }
