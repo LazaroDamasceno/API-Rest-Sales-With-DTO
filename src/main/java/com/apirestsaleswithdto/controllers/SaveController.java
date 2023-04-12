@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.OK;
-
 @RestController
 @AllArgsConstructor
 @RequestMapping("/sales")
@@ -21,22 +19,22 @@ public class SaveController {
 
     @GetMapping
     public ResponseEntity<List<SaleDTO>> getAll() {
-        return new ResponseEntity<>(DtoMapper.convertAll(service.getAll()), OK);
+        return ResponseEntity.ok(DtoMapper.convertAll(service.getAll()));
     }
 
     @GetMapping("{id}")
     public ResponseEntity<SaleDTO> getById(@PathVariable(value = "id") int id) {
-        return new ResponseEntity<>(new SaleDTO(service.getById(id)), OK);
+        return ResponseEntity.ok(new SaleDTO(service.getById(id)));
     }
 
     @PostMapping
     public ResponseEntity<SaleModel> add(@RequestBody SaleModel model) throws IllegalAccessException {
-        return new ResponseEntity<>(service.save(model), OK);
+        return ResponseEntity.ok(service.save(model));
     }
 
     @PutMapping
     public ResponseEntity<SaleModel> update(@RequestBody SaleModel model) throws IllegalAccessException {
-        return new ResponseEntity<>(service.save(model), OK);
+        return ResponseEntity.ok(service.save(model));
     }
 
     @DeleteMapping("{id}")
