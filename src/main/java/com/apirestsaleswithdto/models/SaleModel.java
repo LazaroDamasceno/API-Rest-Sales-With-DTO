@@ -12,11 +12,13 @@ public class SaleModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String customerName;
-    String customerAdress;
+    String customerAddress;
     String customerEmail;
     String paymentMethod;
     double productPrice;
     double salesTax;
+    double amountPaidInTaxes;
+    double finalPrice;
     double amountPaid;
     double change;
 
