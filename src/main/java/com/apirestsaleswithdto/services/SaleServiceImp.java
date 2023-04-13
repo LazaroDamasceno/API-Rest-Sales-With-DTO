@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -19,12 +20,12 @@ public class SaleServiceImp implements SaleService {
     }
 
     @Override
-    public SaleModel getById(int id) {
+    public SaleModel getById(int id) throws NoSuchElementException {
         return repository.findById(id).get();
     }
 
     @Override
-    public SaleModel save(SaleModel model) {
+    public SaleModel save(SaleModel model) throws IllegalAccessException {
         setFinalPrice(model);
         setChange(model);
         setAmountPaidInTaxes(model);
@@ -46,7 +47,7 @@ public class SaleServiceImp implements SaleService {
         model.setChange(change);
     }
 
-    void setAmountPaidInTaxes(SaleModel model) {
+    void setAmountPaidInTaxes(SaleModel model) throws IllegalAccessException {
         var price = model.getProductPrice();
         var finalPrice = model.getFinalPrice();
         var amountPaidInTaxes = finalPrice - price;
@@ -54,7 +55,7 @@ public class SaleServiceImp implements SaleService {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(int id) throws NoSuchElementException {
         repository.deleteById(id);
     }
 }
